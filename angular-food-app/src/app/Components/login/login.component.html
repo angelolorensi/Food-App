@@ -1,0 +1,42 @@
+<div class="container" >
+  <mat-card class="card-left">
+    <img class="card-left-img" src="/assets/img/sandwich.png" alt="sandwich">
+  </mat-card>
+  <mat-card class="card-right">
+
+    <div class="card-right-top">
+      <h1 class="card-right-top-title">Hello Again!</h1>
+      <p class="card-right-top-subtitle">Login to your account to make your orders!</p>
+    </div>
+
+    <form [formGroup]="form" (submit)="onSubmit()" class="card-right-mid">
+
+      <h2 class="card-right-mid-title">Username:</h2>
+      <mat-form-field class="card-right-mid-form" appearance="outline">
+        <mat-label>Place your Username here!</mat-label>
+        <input matInput type="text" required formControlName="username" >
+      </mat-form-field>
+
+      <h2 class="card-right-mid-title">Password:</h2>
+      <mat-form-field class="card-right-mid-form" appearance="outline">
+        <mat-label>Place your password here!</mat-label>
+        <input matInput type="password" required formControlName="password" >
+      </mat-form-field>
+
+      <div *ngIf="isError" class="login-error">
+        Username or password is incorrect, please retry!
+      </div>
+
+      <a href="" style="color:rgb(230, 0, 0); font-weight: 600;" routerLink="/forgot-password">Forgot my password</a>
+
+      <button class="card-right-bottom-button" color="primary" mat-raised-button>Login</button>
+    </form>
+
+
+    <p class="card-right-signup">
+      Don't have an account yet?
+      <a routerLink="/register" style="color: red; font-weight: bold;">Sign up</a>
+    </p>
+  </mat-card>
+</div>
+

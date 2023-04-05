@@ -1,0 +1,4 @@
+<app-header></app-header>
+<app-user-info *ngIf="isLoggedIn"></app-user-info>
+<app-food-panel *ngIf="isLoggedIn"></app-food-panel>
+<app-login *ngIf="!isLoggedIn"></app-login>

@@ -1,0 +1,27 @@
+<mat-toolbar class="mobile-toolbar" color="primary">
+  <a class="mobile-toolbar-title" routerLink="/home">FOOD APP</a>
+</mat-toolbar>
+
+<mat-toolbar *ngIf="isLoggedIn" class="toolbar" color="primary">
+  <a class="toolbar-title" routerLink="/home">FOOD APP</a>
+  <mat-form-field  class="toolbar-search">
+    <mat-label>Search Food...</mat-label>
+    <input matInput type="text" (click)="redirect()" [formControl]="searchBarForm" [(ngModel)]="searchContent" (input)="onSearchTextChanged()" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div class="toolbar-icons">
+    <mat-icon class="toolbar-icons-person" [matMenuTriggerFor]="menu" >person</mat-icon>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item routerLink="/account">Account</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <div class="cart">
+    <p class="cart-counter">{{cart.itens.length}}</p>
+    <mat-icon class="material-icon-cart" routerLink="/cart">shopping_cart</mat-icon>
+    </div>
+  </div>
+</mat-toolbar>

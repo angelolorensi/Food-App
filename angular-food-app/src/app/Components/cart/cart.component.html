@@ -1,0 +1,46 @@
+<app-header></app-header>
+<h1 class="title">YOUR CART</h1>
+<div class="container">
+    <ul>
+      <div>
+      <li *ngFor="let cartItem of cart.itens">
+        <mat-card class="food-card">
+          <div class="food-card-item">
+            <img class="food-card-image" mat-card-image src="{{ cartItem.food.imageUrl }}" alt="image of food"/>
+            <div>
+              <mat-card-title>{{ cartItem.food.name }}</mat-card-title>
+              <mat-card-subtitle>{{ cartItem.food.description }}</mat-card-subtitle>
+            </div>
+            <mat-icon class="food-card-remove" (click)="removeFromCart(cartItem)">delete</mat-icon>
+          </div>
+          <div class="food-card-info">
+            <div class="food-info-quantity">
+              <h2 class="food-info-quantity-text">Quantity:</h2>
+              <mat-form-field class="food-info-quantity-form" appearance="outline">
+                <mat-select value="1" (valueChange)="changeQuantity(cartItem, quantitySelect.value)" #quantitySelect matNativeControl required>
+                  <mat-option value="1">1</mat-option>
+                  <mat-option value="2">2</mat-option>
+                  <mat-option value="3">3</mat-option>
+                  <mat-option value="4">4</mat-option>
+                  <mat-option value="5">5</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <h2 class="food-card-content-price">{{ cartItem.getPrice() | currency : "R$" }}</h2>
+          </div>
+        </mat-card>
+      </li>
+      </div>
+      <div>
+      <mat-card class="cart-checkout">
+        <h1 class="cart-checkout-title">Checkout information:</h1>
+        <h2 class="cart-checkout-quantity">Number of Itens in the cart: {{cart.itens.length}}</h2>
+        <h2 class="cart-checkout-quantity">Cart total price: {{cart.getTotalPrice() | currency: 'R$'}}</h2>
+        <div class="cart-checkout-buttons">
+          <button class="cart-checkout-buttons-checkout"  mat-raised-button>CHECKOUT</button>
+          <button class="cart-checkout-buttons-cancel" mat-raised-button routerLink="/home">Keep Searching</button>
+        </div>
+      </mat-card>
+      </div>
+    </ul>
+</div>

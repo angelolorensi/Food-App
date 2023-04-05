@@ -1,0 +1,19 @@
+.footer{
+  border-top: 1px solid ;
+  background-color: #F44336;
+}
+
+.footer-titulo{
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  color: #ffffff;
+}
+
+.footer-icones{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 30px;
+}

@@ -1,0 +1,79 @@
+<app-header (searchContentChanged)="onSearchTextEntered($event)"></app-header>
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>restaurant</mat-icon>All
+    </ng-template>
+    <ul *ngIf="foods | async else loading">
+      <li class="foods" *ngFor="let food of allFoods | async">
+        <div *ngIf="searchText == '' || food.name.toLowerCase().includes(searchText)">
+          <mat-card class="food-card">
+            <mat-card-header>
+              <mat-card-title>{{food.name}}</mat-card-title>
+              <mat-card-subtitle>{{food.description}}</mat-card-subtitle>
+            </mat-card-header>
+            <img class="food-card-image" mat-card-image src="{{food.imageUrl}}" alt="image of food">
+            <mat-card-content class="food-card-content">
+              <h2 class="food-card-content-price">{{food.price | currency:'R$'}}</h2>
+              <button mat-fab color="warn" (click)="addToCart(food)"><mat-icon class="food-card-content-icon">add</mat-icon></button>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </li>
+    </ul>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>lunch_dining</mat-icon>
+      Food
+    </ng-template>
+    <ul *ngIf="foods | async else loading">
+      <li class="foods" *ngFor="let food of foods | async">
+        <div *ngIf="searchText == '' || food.name.toLowerCase().includes(searchText)">
+          <mat-card class="food-card">
+            <mat-card-header>
+              <mat-card-title>{{food.name}}</mat-card-title>
+              <mat-card-subtitle>{{food.description}}</mat-card-subtitle>
+            </mat-card-header>
+            <img class="food-card-image" mat-card-image src="{{food.imageUrl}}" alt="image of food">
+            <mat-card-content class="food-card-content">
+              <h2 class="food-card-content-price">{{food.price | currency:'R$'}}</h2>
+              <button mat-fab color="warn" (click)="addToCart(food)"><mat-icon class="food-card-content-icon">add</mat-icon></button>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </li>
+    </ul>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>sports_bar</mat-icon>
+      Beverages
+    </ng-template>
+    <ul *ngIf="foods | async else loading">
+      <li class="foods" *ngFor="let food of beverages | async">
+        <div *ngIf="searchText == '' || food.name.toLowerCase().includes(searchText)">
+          <mat-card class="food-card">
+            <mat-card-header>
+              <mat-card-title>{{food.name}}</mat-card-title>
+              <mat-card-subtitle>{{food.description}}</mat-card-subtitle>
+            </mat-card-header>
+            <img class="food-card-image" mat-card-image src="{{food.imageUrl}}" alt="image of food">
+            <mat-card-content class="food-card-content">
+              <h2 class="food-card-content-price">{{food.price | currency:'R$'}}</h2>
+              <button mat-fab color="warn" (click)="addToCart(food)"><mat-icon class="food-card-content-icon">add</mat-icon></button>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </li>
+    </ul>
+  </mat-tab>
+</mat-tab-group>
+
+<ng-template #loading>
+  <div class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+
+<app-footer></app-footer>

@@ -1,0 +1,60 @@
+<mat-card >
+  <h2 class="title">YOUR FOODS:</h2>
+  <div class="add">
+  <button class="add-button" (click)="onAddFood()" mat-raised-button>ADD NEW FOOD</button>
+  </div>
+</mat-card>
+
+<mat-card class="table-card">
+<div class="container" *ngIf="foods | async as foods, else loading">
+<mat-table class="table" [dataSource]="foods!">
+  <!-- Image Column -->
+  <ng-container matColumnDef="image">
+    <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+    <mat-cell class="table-img" *matCellDef="let food">
+       <img src="{{food.imageUrl}}" >
+    </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell class="table-name" *matCellDef="let food"> {{food.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell class="table-description" *matCellDef="let food"> {{food.description}} </mat-cell>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+    <mat-cell class="table-price" *matCellDef="let food"> {{food.price | currency:'R$'}}</mat-cell>
+  </ng-container>
+
+   <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+    <mat-cell class="table-actions" *matCellDef="let food">
+      <button class="table-actions-edit" mat-fab>
+        <mat-icon (click)="onEditFood(food)">edit</mat-icon>
+      </button>
+      <button class="table-actions-remove" mat-fab>
+        <mat-icon (click)="onRemoveFood(food.id)">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+</div>
+
+<ng-template #loading>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+</mat-card>

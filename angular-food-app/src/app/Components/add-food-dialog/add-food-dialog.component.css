@@ -1,0 +1,29 @@
+.form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-title{
+  color: red;
+  font-weight: bold;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+button{
+  opacity: 0.8;
+}
+
+button:hover{
+  opacity: 1;
+}
+
+.currency-code{
+  position:absolute;
+  left:8px;
+  top:10px;
+}

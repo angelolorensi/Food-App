@@ -1,0 +1,37 @@
+<form class="form" [formGroup]="form">
+  <h2 class="form-title">EDIT FOOD</h2>
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput type="text" formControlName="name" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select required formControlName="type">
+      <mat-option value="food">Food</mat-option>
+      <mat-option value="beverage">Beverage</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput type="text" formControlName="description" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <span matPrefix>R$ &nbsp;</span>
+    <input matInput type="text" formControlName="price" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>ImageUrl</mat-label>
+    <input matInput type="text" formControlName="imageUrl" required>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button color="primary" mat-raised-button mat-dialog-close (click)="onSubmit()">EDIT</button>
+    <button mat-raised-button mat-dialog-close>CLOSE</button>
+  </div>
+</form>

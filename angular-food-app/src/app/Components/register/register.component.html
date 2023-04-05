@@ -1,0 +1,84 @@
+<div class="container">
+  <mat-card class="card-left">
+    <img class="card-left-img" src="/assets/img/registration-background.png" alt="registration background">
+  </mat-card>
+  <mat-card class="card-right">
+    <h2 class="card-right-title">Create an account</h2>
+    <p class="card-right-subtitle">Let's get started with by creating your account.</p>
+
+    <form class="form" [formGroup]="form" (submit)="onSubmit()" #formDir="ngForm">
+      <h2 class="card-right-form-title">Username:</h2>
+      <mat-form-field color="accent" class="card-right-form-field" appearance="outline">
+        <mat-label class="card-right-form-field-label">Username</mat-label>
+        <input class="card-right-form-field-input" matInput type="text" formControlName="username" required>
+      </mat-form-field>
+      <div class="form-error" *ngIf="form.get('username')?.hasError('usernameTaken')">
+        Username already in use.
+      </div>
+      <div class="form-error" *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
+        Please provide a valid username.
+      </div>
+
+      <h2 class="card-right-form-title">Email:</h2>
+      <mat-form-field color="accent" class="card-right-form-field" appearance="outline">
+        <mat-label class="card-right-form-field-label">Email</mat-label>
+        <input class="card-right-form-field-input" matInput type="email" formControlName="email" required>
+      </mat-form-field>
+      <div class="form-error" *ngIf="form.get('email')?.hasError('emailTaken')">
+        Email already in use.
+      </div>
+      <div class="form-error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+        Please provide a valid email.
+      </div>
+
+      <h2 class="card-right-form-title">Profile Image:</h2>
+      <div class="card-right-form-field">
+        <input type="file" (change)="onFileSelected($event)" value="select" #selectFile >
+      </div>
+
+      <h2 class="card-right-form-title">Password:</h2>
+      <mat-form-field color="accent" class="card-right-form-field" appearance="outline">
+        <mat-label class="card-right-form-field-label">Password</mat-label>
+        <input class="card-right-form-field-input" matInput type="password" formControlName="password" required>
+      </mat-form-field>
+      <div class="form-error" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+        Please provide a valid password.
+      </div>
+
+      <h2 class="card-right-form-title">Confirm Password:</h2>
+      <mat-form-field color="accent" class="card-right-form-field" appearance="outline">
+        <mat-label class="card-right-form-field-label">Confirm Password:</mat-label>
+        <input class="card-right-form-field-input" matInput type="password" formControlName="confirmPassword" required>
+      </mat-form-field>
+      <div class="form-error" *ngIf="form.get('confirmPassword')?.hasError('passwordMismatch')">
+        Passwords don't match.
+      </div>
+
+      <h2 class="card-right-form-title">Phone:</h2>
+      <mat-form-field color="accent" class="card-right-form-field" appearance="outline">
+        <mat-label class="card-right-form-field-label">Phone:</mat-label>
+        <input placeholder="(XX) XXXXX-XXXX" class="card-right-form-field-input" matInput type="tel" formControlName="phone" required mask="(00) 0 0000-0000">
+      </mat-form-field>
+      <div class="form-error" *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched">
+        Please provide a valid phone.
+      </div>
+
+      <h2 class="card-right-form-title">Sex:</h2>
+      <mat-form-field color="accent" class="card-right-form-field" appearance="outline">
+        <mat-label class="card-right-form-field-label">Sex</mat-label>
+        <mat-select class="card-right-form-field-input" formControlName="sex" required>
+          <mat-option class="card-right-form-field-select" value="male">Male</mat-option>
+          <mat-option class="card-right-form-field-select" value="female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="form-error" *ngIf="form.get('sex')?.invalid && form.get('sex')?.touched">
+        Please provide a valid sex.
+      </div>
+
+      <div class="right-card-buttons">
+        <button class="right-card-buttons-button" mat-raised-button>SIGN UP</button>
+        <button (click)="onCancel()" class="right-card-buttons-button" mat-raised-button>CANCEL</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
