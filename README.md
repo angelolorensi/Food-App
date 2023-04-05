@@ -13,7 +13,7 @@ Food App é um projeto que criei para praticar os frameworks angular e spring bo
 - Spring Boot back-end.
 - Angular front-end.
 
-#Preview das paginas:
+# Preview das paginas:
 ![Screenshot_1](https://user-images.githubusercontent.com/94716338/230188824-1d71d3b4-b182-450a-8916-b9c351a72f57.png)
 ![Screenshot_2](https://user-images.githubusercontent.com/94716338/230188865-a8c3800d-c608-4c53-84a3-d950479c0f8e.png)
 ![Screenshot_3](https://user-images.githubusercontent.com/94716338/230188877-6663dfc8-ec73-4856-b1d9-102e25207e13.png)
