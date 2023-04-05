@@ -34,7 +34,8 @@ Para rodar essa aplicação é necessario possuir:
   - Rodar o SpringFoodAppApplication.java para rodar a API
   
   - *Configurar o banco de dados* 
-    - Na pasta do spring boot spring-food-app\src\main\resources\application.properties adicionar o seu banco de dados mysql
+    - Na pasta do spring boot spring-food-app\src\main\resources\application.properties adicionar o seu banco de dados mysql.
+    - Eu deixei a o Script de criação da tabela de comidas na pasta Dump20230405 se quiser começar com as comidas no DB.
 
     
   
